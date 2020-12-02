@@ -8,7 +8,7 @@ public class Carro {
     int passMax;
     int km;
 
-    public Carro(int gas, int pass){
+    Carro(int gas, int pass){
         this.gas = gas;
         this.gasMax = 100;
         this.pass = pass;
@@ -16,7 +16,7 @@ public class Carro {
         this.km = 0;
     }
 
-    public boolean in(){
+    boolean in(){
         if(pass < passMax){
             pass += 1;
             return true;
@@ -26,6 +26,26 @@ public class Carro {
         }
     }
 
+    boolean out(){
+        if(pass > 0){
+            pass -= 1;
+            return true;
+        }else{
+            System.out.println("fail: nao ha ninguem no carro");
+            return false;
+        }
+    }
+
+    void fuel(int value){
+        if(gas < gasMax){
+            gas += value;
+        }else if(gas > gasMax){
+            gas = gasMax;
+        }
+        
+    }
+
+    @Override
     public String toString(){
         return "pass: "
             + pass
@@ -34,8 +54,6 @@ public class Carro {
             + ", km: "
             + km;
     }
-
-
 
     public static void main(String[] args) {
     
@@ -47,13 +65,16 @@ public class Carro {
             String[] usrIn = line.split(" ");
             if(usrIn[0].equals("in")){
                 car.in();
+            }else if(usrIn[0].equals("out")){
+                car.out();
+            }else if(usrIn[0].equals("fuel")){
+                int qtd = Integer.parseInt(usrIn[1]);
+                car.fuel(qtd);
             }else if(usrIn[0].equals("show")){
                 System.out.println(car);
             }else{
                 System.out.println("Comando invalido");
             }
         }
-
-
     }
 }

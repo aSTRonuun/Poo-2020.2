@@ -104,5 +104,7 @@ public class Carro {
                 System.out.println("Comando invalido");
             }
         }
+
+        sc.close();
     }
 }

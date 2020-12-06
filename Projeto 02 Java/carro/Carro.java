@@ -7,13 +7,17 @@ public class Carro {
     int pass;
     int passMax;
     int km;
+    int contOil;
+    boolean oil;
 
-    Carro(int gas, int pass){
+    Carro(int gas, int pass, int gasMax, int passMax){
         this.gas = gas;
-        this.gasMax = 100;
+        this.gasMax = gasMax;
         this.pass = pass;
-        this.passMax = 2;
+        this.passMax = passMax;
         this.km = 0;
+        this.contOil = 0;
+        this.oil = true;
     }
 
     boolean in(){
@@ -39,7 +43,7 @@ public class Carro {
     void fuel(int value){
         if(gas < gasMax){
             gas += value;
-            if(gas > 100){
+            if(gas > gasMax){
                 gas = gasMax;
             }
         }
@@ -47,8 +51,7 @@ public class Carro {
     }
 
     boolean drive(int distance){
-        if(pass > 0 && gas > 0){
-            
+        if(pass > 0 && gas > 0 && oil == true){ 
             if(distance > gas){
                 km += gas;
                 System.out.println("fail: tanque vazio apos andar " + gas);
@@ -57,30 +60,56 @@ public class Carro {
             }else{
                 km += distance;
                 gas -= distance;
-                return true;  
+                if( km - contOil >= 2000){
+                    oil = false;
+                    contOil =+ km; 
+                }
             }
         }else if(pass == 0){
             System.out.println("fail: nao ha ninguem no carro");
             return false;
         }else if(gas == 0){
             System.out.println("fail: tanque vazio");
+        }else{
+            System.out.println("fail: o oleo precisa ser trocado");
         }
+
         return true;
+
+    }
+
+    void oil(){
+        if(oil){
+            System.out.println("Nivel do Oleo está bom!");
+        }else{
+            oil = true;
+        }
     }
 
     @Override
     public String toString(){
+        String verifOil;
+        if(oil){
+            verifOil = "OK";
+        }else{
+            verifOil = "Alerta de Manutençao";
+        }
+
+        
         return "pass: "
             + pass
             + ", gas: "
             + gas
             + ", km: "
-            + km;
+            + km
+            + ", oil: "
+            + verifOil;          
     }
 
     public static void main(String[] args) {
     
-        Carro car = new Carro(0, 0);
+        Carro car = new Carro(0, 0, 500, 4);
+
         Scanner sc = new Scanner(System.in);
     
         while(true){
@@ -96,6 +125,8 @@ public class Carro {
             }else if(usrIn[0].equals("drive")){
                 int distance = Integer.parseInt(usrIn[1]);
                 car.drive(distance);
+            }else if(usrIn[0].equals("oil")){
+                car.oil();
             }else if(usrIn[0].equals("show")){
                 System.out.println(car);
             }else if(usrIn[0].equals("end")){

@@ -64,17 +64,19 @@ public class Carro {
                     oil = false;
                     contOil =+ km; 
                 }
+                return true;
             }
         }else if(pass == 0){
             System.out.println("fail: nao ha ninguem no carro");
-            return false;
+            return true;
         }else if(gas == 0){
             System.out.println("fail: tanque vazio");
-        }else{
+            return true;
+        }else if(oil == false){
             System.out.println("fail: o oleo precisa ser trocado");
+            return true;
         }
-
-        return true;
+        return false;
 
     }
 

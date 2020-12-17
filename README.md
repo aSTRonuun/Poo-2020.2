@@ -5,8 +5,25 @@ Neste repositórios serão salvos todos os projetos da disciplina de Poo-2020.2
 ## Índice []()
 <!--TOC_BEGIN-->
 - [Links](#links)
-- [S01E01 - Negociações](#s01e01---negociações)
-- [S01E02 - Git](#s01e02---git)
+- [S01 - Atividades](#s01---atividades)
+    - [S01E01 - Negociações](#s01e01---negociações)
+    - [S01E02 - Git](#s01e02---git)
+- [S02E01 - Java Inicio](#s02e01---java-inicio)
+- [S02E02 - Java Interativo - Mago](#s02e02---java-interativo---mago)
+- [S03E01 - Inseto](#s03e01---inseto)
+- [S03E02 - Cofre](#s03e02---cofre)
+- [S04E01 - Encapsulamento - Tamagotchi](#s04e01---encapsulamento---tamagotchi)
+- [S04E02 - ArrayList - Tripas](#s04e02---arraylist---tripas)
+- [S05E01 - Lógica](#s05e01---lógica)
+- [S05E02 - Null](#s05e02---null)
+- [S06E01 - Revisão](#s06e01---revisão)
+- [S06E02 - Sort](#s06e02---sort)
+- [S07E01 - Maps](#s07e01---maps)
+- [S07E02 - Integridade](#s07e02---integridade)
+- [S08 - Excessões](#s08---excessões)
+- [S09 - Herança](#s09---herança)
+- [S10 - Herança II](#s10---herança-ii)
+- [S11 - NxN](#s11---nxn)
 
 <!--TOC_END-->
 
@@ -46,16 +63,75 @@ Neste repositórios serão salvos todos os projetos da disciplina de Poo-2020.2
     - [x] Estudar e melhorar o código do Calango ou tentar criar seu próprio projeto.
     - Você pode colocar seus códigos na pasta **Projeto 02 Java** do seu git
 
-## S02E01 - Java Exercício
-- Lecture
-    - Ler o capítulo 4 da apostila da Caelum.
-- Classwork
-    - [x] Aprender a fazer código interativo e treinar
-- Homework
-    - Opção 1: Fazer o projeto do [Carro](https://github.com/qxcodepoo/arcade/blob/master/base/002/Readme.md).
-    - Opção 2: Iniciar um projeto do zero à sua escolha. Seu projeto deve ter no mínimo:
-        - Uma classe, Construtor, 3 atributos, 4 métodos, método toString, main
-    - Opção 3: Continuar melhorando seu projeto do Calango adicionando novos comportamentos e atributos. 
-- [x] Colocar seus códigos na pasta **Projeto 02 Java**.
-- [x] Fazer um relatório dos seus estudos da semana no arquivo Readme.md dessa pasta.
-    - No relatório deve ter : 1) o que fez, 2) com quem fez, 3) como fez, 4) o que aprendeu e o que tem dificuldade 5) quanto tempo levou.
+## S02E02 - Java Interativo - Mago
+- Read
+    - Exemplos[LINK](s02e02_interativa/Aula.java)
+- Goal
+    - Fazer entrada de dados em java utilizando o Scanner
+    - Fazer conversão entre tipo de dados de String para Inteiro e Float
+    - Ver como quebrar uma string usando o split 
+    - Comparação entre Strings como o equals e ==
+    - Aprender a fazer código interativo e treinar os elementos básicos apresentados na aula passada
+- Home
+    - [x] Projeto: Fazer o Projeto do carro **OU** projeto equivalente à sua escolha.
+        - Opção 1: Fazer o projeto do [Carro](https://github.com/qxcodepoo/arcade/blob/master/base/002/Readme.md)
+        - Opção 2: Crie seu próprio projeto, mas que contenha.
+            - Uma classe, Construtor, 3 atributos, 4 métodos, método toString, Main **interativa**
+    - [x] Colocar seus códigos na pasta **Projeto 02 Calango** e enviar para seu github.
+    - [x] Relatório
+        - Fazer um relatório dos seus estudos da semana **no arquivo Readme.md** dessa pasta no github.
+        - Exemplo de Relatório [LINK](s02e02_interativa/Readme.md)
+        - No relatório deve ter resumidamente: 
+            - 1) o que fez
+            - 2) com quem fez 
+            - 3) como fez
+            - 4) o que aprendeu e o que ainda tem dificuldade 
+            - 5) quanto tempo levou.
+
+## S03E01 - Inseto
+- Read
+    - [x] Ler o capítulo 4 da apostila da Caelum.
+- Goal
+    - Entender o **this**.
+    - Fazer métodos que recebam um outro objeto da mesma classe: `this` e `other`.
+    - Criar classes que utilizem agregação, classes com outras classes dentro dela.
+    - Entender melhor o valor `null` na passagem e no retorno de um objeto.
+- Home
+    - Fazer um projeto do grupo [Duas classes e agregação](https://github.com/qxcodepoo/arcade#duas-classes-usando-agrega%C3%A7%C3%A3o) ou equivalente.
+        - Requisitos:
+        - Mínimo de 2 classes, construtores, toStrings, 3 atributos, 4 métodos, main interativa.
+        - Deve existir uma relação de Agregação (uma classe conter a outra) e manipulação do objeto agregado.
+    - [x] Colocar seus códigos na pasta **Projeto 03 Cofre**.
+    - [x] Fazer o relatório
+
+## S03E02 - Cofre
+- Read
+    - [x] Enum [LINK](https://www.javaprogressivo.net/2012/10/Como-usar-enumA-melhor-maneira-para-manusear-constantes-em-Java.html)
+    - [x] Introdução aos Diagramas de Classe [LINK](http://spaceprogrammer.com/uml/introducao-as-classes-associacoes-e-generalizacoes/)
+- Goal
+    - Ver o tipo Enum
+    - Praticar 
+- 
+
+## S04E01 - Encapsulamento - Tamagotchi
+- Read
+    - [x] Caelum: Capítulo 5
+- Goal
+    - Aprender sobre: Encapsumento, modificadores de acesso, gets e sets e métodos static
+    - Construir o modelo do Pokemon [LINK](s04e01_encapsulamento/Buba.java)
+- Home
+    - [x] Fazer o projeto do Tamagotchi [LINK](https://github.com/qxcodepoo/arcade/blob/master/base/006/Readme.md#shell)
+    - Colocar na pasta **Projeto 04 Tamagotchi**
+
+## S04E02 - ArrayList - Tripas
+- Read
+    - [ ] Olhar o Array na apostila da Caelum: [LINK](https://www.caelum.com.br/apostila-java-orientacao-objetos/um-pouco-de-arrays#desafios-opcionais)
+    - [ ] Olhar o funcionamento do arraylist: [LINK](https://www.w3schools.com/java/java_arraylist.asp)
+    - [ ] Estudar pelo código [LINK](s04e02_arraylist/Vetores.java)
+- Goal
+    - Aprender como funcionam os Arrays e os Arraylists em Java
+    - Aprender as operações básicas de inserir, percorrer, listar, remover no Arrayslist
+    - Ver como podemos utilizar ArrayLists para armazenar objetos e manipular objetos
+- Home (EXTRA)
+    - Fazer projeto sobre Vetores: Sugestão `@014 Contato`
+        - Colocar na pasta **Projeto 05 Contato** e fazer o relatório

@@ -61,7 +61,7 @@ class Pokebola{
 
     }
 
-    boolean Capiturar(Pokemon pokemon) {
+    boolean capiturar(Pokemon pokemon) {
 
         System.out.println("Pokemon Encontrado!");
         if(pokebolasDisponiveis == 0){
@@ -79,6 +79,7 @@ class Pokebola{
         if(valor <= pokemon.esquiva && pokebolasDisponiveis != 0){
             if(pokemon.Raiva())
                 System.out.println("O pokemon lhe atacou");
+            this.pokebolasDisponiveis -= 1;
             System.out.println("O pokemon Escapou");
             return true;
         }
@@ -144,11 +145,11 @@ public class PokemonGet {
                 case 1:{
                    int valor = aleatorio.nextInt(21); //Função randoom para achar um pokemon
                     if(valor < 5){
-                        pokebola.Capiturar(Pokemon.P1);
+                        pokebola.capiturar(Pokemon.P1);
                         System.out.print("Pressione enter para continuar...");
                         System.in.read();
                     }else if(valor <= 10){
-                        pokebola.Capiturar(Pokemon.P2);
+                        pokebola.capiturar(Pokemon.P2);
                         System.out.print("Pressione enter para continuar...");
                         System.in.read();
                     }else{ 

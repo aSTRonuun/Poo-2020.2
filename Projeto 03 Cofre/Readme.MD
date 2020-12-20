@@ -3,7 +3,7 @@
 ## O que fiz
 - Desenvolvi o projeto PokemonGet onde apliquei os conceitos de agregação de classes que estudamos nas aulas destas semana.
 
-- O proketo se baseia em um mini-game insipirado no Universo Pokemon, na qual o ususário pode carçar pokemons com uma quantidade limitada de pokebolas.
+- O projeto se baseia em um mini-game insipirado no Universo Pokemon, na qual o ususário pode carçar pokemons com uma quantidade limitada de pokebolas.
 
 - O game tem um funções **Random** para dinamizar o jogo, caçar pokemons não é uma tarefa fácil e por isso não é facil capiturar pokemons com níveis maiores.
 

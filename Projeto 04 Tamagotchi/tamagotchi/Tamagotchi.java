@@ -5,18 +5,19 @@ class Pet {
     private int energyMax, hungryMax, cleanMax;
     private int energy, clean, hungry;
     private int diamonds;
-    private int age;
+    private int age, ageMax;
     private boolean alive;
 
-    public Pet(int energyMax, int hungryMax, int cleanMax){
+    public Pet(int energyMax, int hungryMax, int cleanMax, int ageMax){
         this.energyMax = energyMax;
         this.hungryMax = hungryMax;
         this.cleanMax = cleanMax;
         this.energy = energyMax;
         this.hungry = hungryMax;
         this.clean = cleanMax;
-        this.diamonds = 0;
+        this.ageMax = ageMax;
         this.age = 0;
+        this.diamonds = 0;
         this.alive = true;
     }
 
@@ -53,6 +54,16 @@ class Pet {
             hungry = hungryMax;
     }
 
+    private void setAge(int value){
+        age += value;
+        if(age >= ageMax){
+            age = ageMax;
+            System.out.println("Seu pet morreu de velhice");
+            alive = false;
+        }
+    }
+
+
     boolean testarMorto(){
         if(this.alive)
             return false;
@@ -88,14 +99,18 @@ class Pet {
         return this.alive;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public void play(){
         if(testarMorto())
             return;
         this.setHungry(getHungry() - 2);
         this.setClean(getClean() - 3);
         this.setEnergy(getEnergy() - 2);
+        this.setAge(1);
         this.diamonds += 1;
-        this.age += 1;
     }
 
     public void clean(){
@@ -104,7 +119,7 @@ class Pet {
         this.setEnergy(getEnergy() - 3);
         this.setHungry(getHungry() - 1);
         this.setClean(getCleanMax());
-        this.age += 2;
+        this.setAge(2);
     }
 
     public void eat(){
@@ -113,7 +128,7 @@ class Pet {
         this.setEnergy(getEnergy() - 1);
         this.setHungry(getHungry() + 4);
         this.setClean(getClean() -2);
-        this.age += 1;
+        this.setAge(1);
     }
 
     public void sleep(){
@@ -126,16 +141,12 @@ class Pet {
             return;
     }
 
-
-
     @Override
     public String toString() {
         return "Energy: " + energy + "/" + energyMax + ", \n"
             + "Hungry: " + hungry + "/" + hungryMax + ", \n"
             + "Clean: " + clean + "/" + cleanMax + ", \n"
-            + "Diamonds: " + diamonds + ", Idade: " + age;
-
-
+            + "Diamonds: " + diamonds + ", Idade: " + age + "/" + ageMax;
     }
 
 }
@@ -143,7 +154,7 @@ class Pet {
 public class Tamagotchi {
     
     public static void main(String[] args) {
-        Pet pet = new Pet(0, 0, 0);
+        Pet pet = new Pet(0, 0, 0, 0);
         Scanner sc = new Scanner(System.in);
         
         while(true){
@@ -154,7 +165,8 @@ public class Tamagotchi {
                 int energy = Integer.parseInt(usrIn[1]);
                 int hungry = Integer.parseInt(usrIn[2]);
                 int clean = Integer.parseInt(usrIn[3]);
-                pet = new Pet(energy, hungry, clean);
+                int age = Integer.parseInt(usrIn[4]);
+                pet = new Pet(energy, hungry, clean, age);
             }else if(usrIn[0].equals("play")){
                 pet.play();
             }else if(usrIn[0].equals("eat")){

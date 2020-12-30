@@ -1,0 +1,102 @@
+import java.util.ArrayList;
+
+class Fone{
+    String label;
+    String number;
+
+    public Fone(String label, String number){
+        this.label = label;
+        this.number = number;
+    }
+
+    public static boolean validate(String number){
+        String validos = "0123456789()-";
+        for(int i=0;i < number.length();i++){
+            if(validos.indexOf(number.charAt(i)) == -1)
+                return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return label
+            + ": "
+            + number;
+    }
+
+}
+
+class Contato{
+    String nome;
+    ArrayList<Fone> fones;
+
+    public Contato(String nome){
+        this.nome = nome;
+        this.fones = new ArrayList<>();
+    }
+
+    public void addFone(String label, String number){
+        if(Fone.validate(number))
+            fones.add(new Fone(label, number));
+        return;
+        
+    }
+
+    Fone getFone(int index){
+        if(index >= 0 || index <= fones.size())
+            return fones.get(index);
+        System.out.println("Índice inválido");
+        return null;
+    }
+    Fone getFone(String label){
+        for(Fone fone : fones){
+            if(fone.label.equals(label))
+                return fone;
+        }
+        System.out.println("Fone não encontrado");
+        return null;
+    }
+    boolean rmFone(int index){
+        if(index >=0 || index <= fones.size()){ 
+            fones.remove(index);
+            return true;
+        }
+        System.out.println("Índice inválido");
+        return false;
+    }
+    boolean rmFone(String number){
+        if(!Fone.validate(number)){ 
+            System.out.println("Digite um numero valido");
+            return false;
+        }
+        for(Fone fone : fones){
+            if(fone.number.equals(number))
+                fones.remove(fone);
+                return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        String saida = this.nome;
+        int i = 0;
+        for(Fone fone : fones){ 
+            saida += " ["+ i + ":" + fone + "]";
+            i++;
+        }
+        return saida;
+    }
+
+    public static void main(String[] args) {
+        Contato contato = new Contato("David");
+        contato.addFone("oi", "88");
+        contato.addFone("tim", "99");
+        contato.addFone("claro", "97");
+
+        System.out.println(contato);
+        System.out.println(contato.getFone(1));
+        System.out.println(contato.getFone("claro"));
+    }
+}

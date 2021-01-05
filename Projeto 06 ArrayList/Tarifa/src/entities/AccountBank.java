@@ -90,6 +90,32 @@ public class AccountBank{
         return true;
     }
 
+    public boolean reversal(int[] indexs){
+        for(int i=0;i<indexs.length;i++){
+            boolean reverse = false;
+            float value = 0;
+            for(Operation op : extract){
+                if(indexs[i] == extract.indexOf(op) && op.getDescricao().equals("Tariff")){
+                    balance += op.getValue() * (-1);
+                    value = op.getValue() * (-1);
+                    reverse = true;
+                }
+                else if(indexs[i] == extract.indexOf(op) && !op.getDescricao().equals("Tariff")){
+                    System.out.println("Index " + indexs[i] + " is not tariff");
+                }
+                else if(indexs[i] >= extract.size()){
+                    System.out.println("Index " + indexs[i] + " is invalid");
+                    indexs[i] = -1;
+                }
+            }
+            if(reverse){
+                Operation op = new Operation("Reverse", value, balance);
+                extract.add(op);
+            }
+        }
+        return true;
+    }
+
     @Override
     public String toString() {
         return "Account: " + number + " Balence: " + balance;

@@ -18,6 +18,10 @@ public class aplication {
         account.getExtract();
         account.deposit(30);
         account.getExtractLast(3);
+        account.tariff(10);
+        account.getExtract();
+        account.toWithdraw(-220);
+        account.getExtract();
     }
     
 }

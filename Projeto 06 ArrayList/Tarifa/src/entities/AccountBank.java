@@ -53,7 +53,7 @@ public class AccountBank{
         }
         balance += value;
         System.out.println("Sucess!");
-        Operation op = new Operation("deposit", value, balance);
+        Operation op = new Operation("Deposit", value, balance);
         extract.add(op);
         return true;
     }
@@ -63,15 +63,29 @@ public class AccountBank{
             System.out.println("Invalid value. Trey again...");
             return false;
         }
-        if(balance + value <= 0 || balance <= 0){
+        if(balance + value < 0 || balance < 0){
             System.out.println("There is not enough money!");
             return false;
         }
         balance += value;
-        if(balance <= 0)
-            balance = 0;
         System.out.println("Sucess!");
         Operation op = new Operation("Withdraw", value, balance);
+        extract.add(op);
+        return true;
+    }
+
+    public boolean tariff(float value){
+        if(value < 0){
+            System.out.println("Invalid value. Trey again...");
+            return false;
+        }
+        if(balance - value < 0){
+            System.out.println("There is not enough money!");
+            return false;
+        }
+        balance -= value;
+        System.out.println("Sucess!");
+        Operation op = new Operation("Tariff", -value, balance);
         extract.add(op);
         return true;
     }

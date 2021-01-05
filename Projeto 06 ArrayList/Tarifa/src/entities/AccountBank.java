@@ -24,18 +24,20 @@ public class AccountBank{
         for(Operation op : extract){
             System.out.println(extract.indexOf(op) + ": " +  op.toString());  
         }
+        System.out.println("-----------------------------");
         return;
     }
 
     public void getExtractLast(int n){
-        System.out.println("-----------Extract from the " + n + " -----------");
         if(extract.size() > n){
+            System.out.println("-----------Extract from the " + n + " -----------");
             int last = extract.size() - n;
             for(Operation op : extract){
                 if(extract.indexOf(op) >= last){
                     System.out.println(extract.indexOf(op) + ": " + op.toString());
                 }
             }
+            System.out.println("---------------------------------------------");
         }else{
             getExtract();
         }

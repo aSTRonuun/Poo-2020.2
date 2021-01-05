@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 class Kid{
 
-    String name;
-    int age;
+    private String name;
+    private int age;
     
 
     public Kid(String name, int age){
@@ -32,11 +32,13 @@ class PulaPula{
     
     ArrayList<Kid> kidsWaiting;
     ArrayList<Kid> kidsPlaying;
+    int limit;
     double cashBox;
 
-    public PulaPula(){
+    public PulaPula(int limit){
         this.kidsWaiting = new ArrayList<>();
         this.kidsPlaying =  new ArrayList<>();
+        this.limit = limit;
         this.cashBox = 0;
     }
 
@@ -51,6 +53,10 @@ class PulaPula{
     public void in(){
         if(kidsWaiting.isEmpty()){
             System.out.println("Não ná nenhuma criança no fila.");
+            return;
+        }
+        if(kidsPlaying.size() == limit){
+            System.out.println("Limite superado, espere uma criança sair");
             return;
         }
         Kid kidFirst = kidsWaiting.get(kidsWaiting.size() - 1);
@@ -88,25 +94,28 @@ class PulaPula{
                 return true;
             }
         }
-        System.out.println("Nome inválido, tente novamente");
+        System.out.println("Nome inválido, tente novamente...");
         return false;
     }
 
     @Override
     public String toString() {
-        return "Caixa: " + cashBox + "\n"
+        return "Caixa: " + cashBox + " Limit: " + kidsPlaying.size() + "/" + limit + "\n"
             + "=> " + kidsWaiting + "=> " + kidsPlaying + " ";
     }
 
     public static void main(String[] args) {
-        PulaPula pulapula = new PulaPula();
+        PulaPula pulapula = new PulaPula(0);
         
         Scanner sc = new Scanner(System.in);
 
         while(true){
             String line = sc.nextLine();
             String[] usrIn = line.split(" ");
-            if(usrIn[0].equals("chegou")){
+            if(usrIn[0].equals("init")){
+                int limit = Integer.parseInt(usrIn[1]);
+                pulapula = new PulaPula(limit);
+            }else if(usrIn[0].equals("chegou")){
                 String name = usrIn[1];
                 int age = Integer.parseInt(usrIn[2]);
                 pulapula.arrive(new Kid(name, age));

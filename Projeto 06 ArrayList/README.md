@@ -1,7 +1,7 @@
 # Relatório
 
 ## O que fiz?
-- Realizei dois projetos proposto da semana [Pula pula no parquinho]{https://github.com/qxcodepoo/arcade/blob/master/base/009/Readme.md} e [Tarifas - Agência 1]{https://github.com/qxcodepoo/arcade/blob/master/base/007/Readme.md}, no projeto pula pula eu fiz apartir do código visto em sala, na qual adicionei funções novas complementares. Ademais fiz o projeto Tarifas com base nos conhecimentos adquiridos nas aulas da semana, com o tema ArrayList.
+- Realizei dois projetos proposto da semana [Pula pula no parquinho](https://github.com/qxcodepoo/arcade/blob/master/base/009/Readme.md) e [Tarifas - Agência 1](https://github.com/qxcodepoo/arcade/blob/master/base/007/Readme.md), no projeto pula pula eu fiz apartir do código visto em sala, na qual adicionei funções novas complementares. Ademais fiz o projeto Tarifas com base nos conhecimentos adquiridos nas aulas da semana, com o tema ArrayList.
 
 ## Com quem fiz?
 
@@ -49,6 +49,6 @@
 
 ### Quanto tempo levou?
 
-- No projeto [Pula pula no parquinho]{https://github.com/qxcodepoo/arcade/blob/master/base/009/Readme.md} levou umas duas horas pra refazer e adicionar as funções novas.
+- No projeto [Pula pula no parquinho](https://github.com/qxcodepoo/arcade/blob/master/base/009/Readme.md) levou umas duas horas pra refazer e adicionar as funções novas.
 
-- No projeto [Tarifas - Agência 1]{https://github.com/qxcodepoo/arcade/blob/master/base/007/Readme.md}, me tomou bem mais tempo pois fiquei com algumas dúvias e optei por ficar pesquisando, estudando por outros códigos e dúvidas nos fóruns da comunidade. Portanto, creio que levei umas 7 horas para completudar tudo.
+- No projeto [Tarifas - Agência 1](https://github.com/qxcodepoo/arcade/blob/master/base/007/Readme.md), me tomou bem mais tempo pois fiquei com algumas dúvias e optei por ficar pesquisando, estudando por outros códigos e dúvidas nos fóruns da comunidade. Portanto, creio que levei umas 7 horas para completudar tudo.

@@ -33,3 +33,5 @@
 - Compreendi melhor a como tratar possíveis erros nas funções ``` boolean ``` e ``` void ``` e também a como selecionar os objetos por index, algo muito útil.
 
 ### Quanto tempo levei?
+
+- Levei um pouco mais de 4 horas para fazer o código, buscar as informações de ajuda, fiquei um pouco de dificuldade para entender a parte do null, mas consegui completar sem muitas dificuldades.

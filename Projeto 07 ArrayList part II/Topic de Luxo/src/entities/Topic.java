@@ -22,6 +22,10 @@ public class Topic {
 
     public boolean toBoard(Pass pass){
         for(int i=0;i<seats.size();i++){
+            if(seats.get(i) != null && pass.getName().equals(seats.get(i).getName())){
+                System.out.println("Passenger already registered.");
+                return false;
+            }
             if(pass.getAge() >= 60){
                 if(OcpPrefSeats + 1 <= MaxPrefSeats && seats.get(i) == null){
                     seats.set(i, pass);
@@ -51,6 +55,21 @@ public class Topic {
             }
         }
         return false;
+    }
+
+    public void land(String name){
+        for(int i=0;i<seats.size();i++){
+            if(seats.get(i) != null && name.equals(seats.get(i).getName())){
+                if(seats.get(i).getAge() >= 60)
+                    OcpPrefSeats -= 1;
+                else
+                    OcpNormalSeats -= 1;
+                seats.set(i, null);
+                return;
+            }
+        }
+        System.out.println("Passenger not found.");
+        return;
     }
     
 }

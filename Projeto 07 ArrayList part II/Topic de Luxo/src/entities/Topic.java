@@ -31,13 +31,11 @@ public class Topic {
                     seats.set(i, pass);
                     OcpPrefSeats += 1;
                     return true;
-                }if(seats.get(i) == null){
+                }if(seats.get(i) == null && OcpNormalSeats != MaxNormalSeats){
                     seats.set(i, pass);
                     OcpNormalSeats += 1;
                     return true;
                 }
-                System.out.println("Crowded vehicle");
-                return false;
             }if(pass.getAge() < 60){
                 if(OcpNormalSeats + 1 <= MaxNormalSeats){
                     if(i >= MaxPrefSeats && seats.get(i) == null){
@@ -70,6 +68,20 @@ public class Topic {
         }
         System.out.println("Passenger not found.");
         return;
+    }
+
+    @Override
+    public String toString() {
+        String saida = "[ ";
+
+        for(int i=0;i<seats.size();i++){
+            if(i < MaxPrefSeats){
+                saida += "@" + seats.get(i).toString() + " ";
+            }else{
+                saida += "=" + seats.get(i).toString() + " ";
+            }
+        }
+        return saida + "]";
     }
     
 }

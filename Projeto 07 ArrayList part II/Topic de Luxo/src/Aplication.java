@@ -9,9 +9,8 @@ public class Aplication {
         topic.toBoard(new Pass("davi", 17));
         topic.toBoard(new Pass("gui", 80));
         topic.toBoard(new Pass("ana", 35));
-        topic.toBoard(new Pass("ana", 20));
-        topic.land("davi");
         
+        System.out.println(topic);
     }
 
 }

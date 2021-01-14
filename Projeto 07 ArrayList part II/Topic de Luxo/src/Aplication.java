@@ -24,15 +24,17 @@ public class Aplication {
             }else if(usrIn[0].equals("out")){
                 String name = usrIn[1];
                 topic.land(name);
-            }else if(usrIn[1].equals("show")){
+            }else if(usrIn[0].equals("show")){
                 System.out.println(topic);
-            }else if(usrIn[1].equals("end")){
+            }else if(usrIn[0].equals("end")){
                 break;
             }else{
                 System.out.println("Invalid Command...");
             }
         }
         sc.close();
+
+        
     }
 
 }

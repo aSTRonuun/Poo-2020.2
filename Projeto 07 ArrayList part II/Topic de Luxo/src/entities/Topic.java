@@ -75,13 +75,24 @@ public class Topic {
         String saida = "[ ";
 
         for(int i=0;i<seats.size();i++){
-            if(i < MaxPrefSeats){
-                saida += "@" + seats.get(i).toString() + " ";
-            }else{
+            if(seats.get(i) == null && i < MaxPrefSeats){
+                saida += " @ ";
+            }else if(seats.get(i) == null && i > MaxPrefSeats){
+                saida += " = ";
+            }else if(seats.get(i) != null && i < MaxPrefSeats){
+                saida += " @" + seats.get(i).toString() + " ";
+            }else if(seats.get(i) != null && i >= MaxPrefSeats){
                 saida += "=" + seats.get(i).toString() + " ";
             }
         }
+
         return saida + "]";
     }
+
+    /*
+    
+    */
+
+    
     
 }

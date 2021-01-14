@@ -3,7 +3,6 @@ package entities;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 public class Topic {
     
     private ArrayList<Pass> seats;
@@ -88,11 +87,4 @@ public class Topic {
 
         return saida + "]";
     }
-
-    /*
-    
-    */
-
-    
-    
 }

@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Schedule {
     
@@ -12,13 +13,24 @@ public class Schedule {
 
     public boolean addContact(String name, ArrayList<Phone> phones){
         for(Contact contact : contacts){
-            if(contact.equals(name)){
+            if(contact.getName().equals(name)){
                 System.out.println("Name already redistered!");
                 return false;
             }
         }
-        Contact cont = new Contact(name, phones);
-        contacts.add(cont);
+        this.contacts.add(new Contact(name, phones));
+        Collections.sort(contacts);
         return true;
     }
+
+    @Override
+    public String toString() {
+        String exit = "";
+
+        for(Contact contact : contacts)
+            exit += "- " + contact.toString() + "\n" ;
+
+        return exit;
+    }
 }
+

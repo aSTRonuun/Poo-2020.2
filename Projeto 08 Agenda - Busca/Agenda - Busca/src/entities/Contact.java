@@ -2,7 +2,7 @@ package entities;
 
 import java.util.ArrayList;
 
-public class Contact {
+public class Contact implements Comparable<Contact> {
     
     private String name;
     private ArrayList<Phone> phones;
@@ -10,6 +10,11 @@ public class Contact {
     public Contact(String name){
         this.name = name;
         this.phones = new ArrayList<>();
+    }
+
+    public Contact(String name, ArrayList<Phone> phones){
+        this.name = name;
+        this.phones = phones;
     }
 
     public boolean addPhone(String id, String number){
@@ -53,6 +58,11 @@ public class Contact {
     }
 
     @Override
+    public int compareTo(Contact other) {
+        return this.name.compareTo(other.getName());
+    }
+
+    @Override
     public String toString() {
         String exitString = this.name;
         int i=0;
@@ -63,3 +73,4 @@ public class Contact {
         return exitString;
     }
 }
+

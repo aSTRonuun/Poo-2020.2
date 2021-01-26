@@ -23,6 +23,10 @@ public class Phone {
         return id;
     }
 
+    public String getNumber() {
+        return number;
+    }
+
     @Override
     public String toString() {
         return id + ":" + number;

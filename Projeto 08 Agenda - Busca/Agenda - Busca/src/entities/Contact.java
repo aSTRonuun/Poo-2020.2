@@ -2,6 +2,7 @@ package entities;
 
 import java.util.ArrayList;
 
+
 public class Contact implements Comparable<Contact> {
     
     private String name;
@@ -22,18 +23,16 @@ public class Contact implements Comparable<Contact> {
             phones.add(new Phone(id, number));
             return true;
         }
-        System.out.println("Invalid number... try again!");
-        return false;
+        throw new RuntimeException("Invalid number... try again!");
     }
 
     public boolean rmvPhone(int index){
        if(index >= 0 && index < phones.size()){
            phones.remove(index);
-           System.out.println("sycessfully removed");
+           System.out.println("sucessfully removed");
            return true;
        }
-       System.out.println("Invalid index");
-       return false;
+       throw new RuntimeException("Invalid index");
     }
 
     public Phone getNamePhone(String name){
@@ -53,8 +52,7 @@ public class Contact implements Comparable<Contact> {
         if(index >= 0 || index <= phones.size()){
             return phones.get(index);
         }
-        System.out.println("Invalid index");
-        return null;
+        throw new RuntimeException("Invalid index");
     }
 
     @Override

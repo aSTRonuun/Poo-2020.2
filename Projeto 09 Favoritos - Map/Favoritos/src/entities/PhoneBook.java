@@ -16,6 +16,8 @@ public class PhoneBook {
     public void addContact(String name, ArrayList<Phone> phones){
         if(this.contacts.containsKey(name)){
             this.contacts.get(name).addPhones(phones);
+        }if(this.bookMarks.containsKey(name)){
+            this.bookMarks.get(name).addPhones(phones);
             return;
         }
         Contact addContact = new Contact(name);
@@ -46,18 +48,40 @@ public class PhoneBook {
         Contact addBookMark = this.contacts.get(name);        
         this.contacts.get(name).setStarred(true);
         this.bookMarks.put(name, addBookMark);
+        this.contacts.remove(name);
         System.out.println("Contact "+ name +" added to favorites list.");
         return;
     }
 
     public void unBookMark(String name){
-        if(!this.contacts.containsKey(name))
-            throw new RuntimeException("Contact "+ name +" does not exist.");
         if(!this.bookMarks.containsKey(name))
-            throw new RuntimeException("Contact "+ name +" is not saved in the favorites list.");
+            throw new RuntimeException("Contact "+ name +" does not exit.");
         
+        Contact addContact = this.bookMarks.get(name);
+        this.contacts.put(name, addContact);
         this.bookMarks.remove(name);
         System.out.println("Contact "+ name +" removed successfully");
     }
-    
+
+    public String getBookMarks(){
+        String bookMarksList = "";
+        for(Contact bookMark : this.bookMarks.values())
+            bookMarksList += bookMark.toString() + "\n";
+        return bookMarksList;
+    }
+
+    public void search(){
+        
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder exit = new StringBuilder();
+        for(Contact bookMark : this.bookMarks.values())
+            exit.append(bookMark.toString() + "\n");
+        for(Contact contact : this.contacts.values())
+            exit.append(contact.toString() + "\n");
+        return exit.toString();
+    }
+
 }

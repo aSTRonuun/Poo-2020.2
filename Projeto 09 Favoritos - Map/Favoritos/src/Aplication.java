@@ -9,12 +9,19 @@ public class Aplication {
         
         PhoneBook phoneBook = new PhoneBook();
         ArrayList<Phone> phones = new ArrayList<>();
+        ArrayList<Phone> phone1 = new ArrayList<>();
         phones.add(new Phone("claro", "159753"));
         phones.add(new Phone("time", "aa563"));
         phones.add(new Phone("oio", "756389"));
         phoneBook.addContact("vitor", phones);
-        phoneBook.bookMark("vitor");
-        phoneBook.unBookMark("vitor");
-        
+        phone1.add(new Phone("claro", "1777"));
+        phone1.add(new Phone("CLA", "753"));
+        phoneBook.addContact("ana", phone1);
+        phoneBook.addContact("dri", phones);
+        phoneBook.bookMark("dri");
+        phoneBook.bookMark("ana");
+        System.out.println(phoneBook);
+        System.out.println(phoneBook.getBookMarks()); 
+
     }
 }

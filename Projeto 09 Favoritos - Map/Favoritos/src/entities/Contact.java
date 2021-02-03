@@ -76,6 +76,7 @@ public class Contact {
             exit.append(" [" + i + ":" + phone.toString() + "]");
             i++;
         }
+        exit.append("\n");
         return exit.toString();
     }
 

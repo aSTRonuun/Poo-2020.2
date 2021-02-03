@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+import entities.Contact;
 import entities.Phone;
 import entities.PhoneBook;
 
@@ -21,7 +22,11 @@ public class Aplication {
         phoneBook.bookMark("dri");
         phoneBook.bookMark("ana");
         System.out.println(phoneBook);
-        System.out.println(phoneBook.getBookMarks()); 
+        System.out.println(phoneBook.getBookMarks());
+        ArrayList<Contact> regex = new ArrayList<>();
+        regex = phoneBook.search("cla");
+        System.out.println(regex);
+        
 
     }
 }

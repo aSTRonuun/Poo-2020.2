@@ -67,7 +67,8 @@ public class Contact implements Comparable<Contact> {
         for(Phone phones : phones){ 
             exitString += " [" + i + ":" + phones.toString() + "]";
             i++;
-        }   
+        }
+        exitString += "\n";   
         return exitString;
     }
 }

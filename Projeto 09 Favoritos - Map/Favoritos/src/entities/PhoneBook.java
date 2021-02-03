@@ -2,6 +2,8 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PhoneBook {
     
@@ -66,21 +68,36 @@ public class PhoneBook {
     public String getBookMarks(){
         String bookMarksList = "";
         for(Contact bookMark : this.bookMarks.values())
-            bookMarksList += bookMark.toString() + "\n";
+            bookMarksList += bookMark.toString();
         return bookMarksList;
     }
 
-    public void search(){
-        
+    public ArrayList<Contact> search(String expression){
+        ArrayList<Contact> regexContact = new ArrayList<>();
+
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher;
+        for(Contact bookMark : this.bookMarks.values()){
+            matcher = pattern.matcher(bookMark.toString());
+            if(matcher.find())
+                regexContact.add(bookMark);
+        }
+        for(Contact contact : this.contacts.values()){
+            matcher = pattern.matcher(contact.toString());
+            if(matcher.find())
+                regexContact.add(contact);
+        }
+
+        return regexContact;
     }
 
     @Override
     public String toString() {
         StringBuilder exit = new StringBuilder();
         for(Contact bookMark : this.bookMarks.values())
-            exit.append(bookMark.toString() + "\n");
+            exit.append(bookMark.toString());
         for(Contact contact : this.contacts.values())
-            exit.append(contact.toString() + "\n");
+            exit.append(contact.toString());
         return exit.toString();
     }
 

@@ -16,16 +16,20 @@ public class PhoneBook {
     }
 
     public void addContact(String name, ArrayList<Phone> phones){
+        boolean contains = true;
         if(this.contacts.containsKey(name)){
             this.contacts.get(name).addPhones(phones);
+            contains = false;
         }if(this.bookMarks.containsKey(name)){
             this.bookMarks.get(name).addPhones(phones);
             return;
         }
-        Contact addContact = new Contact(name);
-        addContact.addPhones(phones);
-        this.contacts.put(name, addContact);
-        System.out.println("Contact added sucessefully.");
+        if(contains){
+            Contact addContact = new Contact(name);
+            addContact.addPhones(phones);
+            this.contacts.put(name, addContact);
+            System.out.println("Contact added sucessefully.");
+        }
         return;
     }
 
@@ -33,6 +37,7 @@ public class PhoneBook {
         if(this.contacts.containsKey(name)){
             this.contacts.remove(name);
             System.out.println("Contact removed from contact list.");
+            return true;
         }if(this.bookMarks.containsKey(name)){
             this.bookMarks.remove(name);
             System.out.println("Contact removed from favorites list.");
@@ -61,6 +66,7 @@ public class PhoneBook {
         
         Contact addContact = this.bookMarks.get(name);
         this.contacts.put(name, addContact);
+        this.bookMarks.get(name).setStarred(false);
         this.bookMarks.remove(name);
         System.out.println("Contact "+ name +" removed successfully");
     }

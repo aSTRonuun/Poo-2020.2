@@ -25,12 +25,11 @@
                 +```rmvPhone```: remover fones<br/>
                 +```getNamePhone```: obter nomes<br/>
                 +```getPhones```: obter fones<br/>
-                +```compareTo```: comparar nos para ordenação<br/>
                 +```toString```:<br/>
         - #### PhoneBook - entidade Agenda
             - _Atributos_<br/> 
-                -```contacts```: linda de contatos **TreeMapa**<br/>
-                -```bookmarks```: linda de favoritos **TreeMapa**<br/>
+                -```contacts```: linda de contatos **TreeMap**<br/>
+                -```bookmarks```: linda de favoritos **TreeMap**<br/>
             - _Métodos_<br/>
                 +```addContact```: adicionar contato<br/>
                 +```rmContact```: remover contato<br/>

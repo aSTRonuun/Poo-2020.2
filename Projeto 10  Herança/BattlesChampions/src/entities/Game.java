@@ -63,7 +63,6 @@ public class Game {
             showPlayers();
             rmvDeadBodies();
         }
-        sc.close();
     }
     
 }

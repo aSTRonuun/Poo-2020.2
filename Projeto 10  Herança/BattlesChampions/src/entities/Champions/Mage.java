@@ -12,7 +12,7 @@ public class Mage extends Trol{
         random = new Random();
         name = new NameGenarator().generate(random.nextInt(5) + 3);
         st = random.nextInt(5) + 7;
-        hp = random.nextInt(30) + 10;
+        hp = random.nextInt(30) + 30;
         mn = random.nextInt(20) + 10;
     }
 
@@ -40,16 +40,16 @@ public class Mage extends Trol{
         Random random = new Random();
         hp -= qtd;
         if(random.nextInt(2) == 1){
-            mn += 4;
+            mn += 3;
             System.out.print("Mage: 💫 won mana ");
         }
     }
     public boolean ultimate(Player other){
         Random random = new Random();
         int probability = random.nextInt(10);
-        if(this.hp <= 20 && this.mn >= 10 && probability < 5){
+        if(this.hp <= 30 && this.mn >= 7 && probability < 4){
             this.hp += 15;
-            this.mn -= 10;
+            this.mn -= 5;
             System.out.print("ULTIMATE: 💚 healing spell");
             return true;
         }

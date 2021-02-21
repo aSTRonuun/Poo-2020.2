@@ -12,7 +12,8 @@ public class Wizard extends Mage {
         int probability = random.nextInt(10);
         if(this.mn >= 10 && probability < 5){
             other.takeDemage(qtd, this);
-            System.out.print("Expelliarmus 🌀");
+            mn -= 7;
+            System.out.print("Expelliarmus 🌀 ");
         }else
             hp -= qtd;
         if(random.nextInt(2) == 1){
@@ -23,7 +24,7 @@ public class Wizard extends Mage {
     public boolean ultimate(Player other){
         Random random = new Random();
         int probability = random.nextInt(10);
-        if(this.hp <= 20 && probability < 5){
+        if(this.hp <= 30 && probability < 6){
             this.mn += 5;
             System.out.print("ULTIMATE: 💫  Recover mana");
             return true;

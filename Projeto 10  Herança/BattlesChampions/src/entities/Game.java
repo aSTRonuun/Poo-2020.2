@@ -7,7 +7,9 @@ import java.util.Scanner;
 
 import entities.Champions.Player;
 import entities.Champions.Trol;
+import entities.Champions.Warraior;
 import entities.Champions.Wizard;
+import entities.Champions.Assassin;
 import entities.Champions.Mage;
 
 
@@ -15,12 +17,14 @@ public class Game {
     List<Player> players;
     Scanner sc = new Scanner(System.in);
 
-    public Game(){
+    public Game(int nTrols){
         this.players = new ArrayList<>();
-        for(int i=0;i<2;i++)
+        for(int i=0;i<nTrols;i++)
             players.add(new Trol());
         players.add(new Mage());
         players.add(new Wizard());
+        players.add(new Warraior());
+        players.add(new Assassin());
         Collections.shuffle(players);
     }
     public void showPlayers(){

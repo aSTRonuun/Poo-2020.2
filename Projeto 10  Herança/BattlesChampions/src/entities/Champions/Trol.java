@@ -13,8 +13,8 @@ public class Trol implements Player{
     public Trol(){
         random = new Random();
         name = new NameGenarator().generate(random.nextInt(2) + 2);
-        st = random.nextInt(5) + 5;
-        hp = random.nextInt(30) + 30;
+        st = random.nextInt(5) + 3;
+        hp = random.nextInt(25) + 20;
     }
     public String getName() {
         return name;
@@ -38,7 +38,7 @@ public class Trol implements Player{
     }
     public boolean ultimate(Player other){
         Random random = new Random();
-        int probability = random.nextInt(10);;
+        int probability = random.nextInt(10);
         if(this.hp <= 15 && probability <5){ 
             if(other != null && other.isAlive())
             other.takeDemage(st*2, this);

@@ -52,7 +52,7 @@ public class Assassin extends Trol {
         int probability = random.nextInt(10);
         if(probability < 3){
             if(other != null && other.isAlive())
-            other.takeDemage(st*3, this);
+            other.takeDemage(st*2, this);
             System.out.print("ULTIMATE: 💥 critical hit ");
             if(other.getHp() <= 0){
                 this.st += 3;

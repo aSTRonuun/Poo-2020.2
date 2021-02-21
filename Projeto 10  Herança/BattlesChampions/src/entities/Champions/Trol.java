@@ -17,7 +17,7 @@ public class Trol implements Player{
         hp = random.nextInt(25) + 20;
     }
     public String getName() {
-        return name;
+        return "🧟" + name;
     }
     public boolean isAlive() {
         return hp > 0;

@@ -28,6 +28,8 @@ public class App {
                         ntrols = 5;
                     Game game = new Game(ntrols);
                     game.play();
+                    System.out.println("Enter [0] for exit... ");
+                    int exit = sc.nextInt();
                 }else if(command == 0){
                     break;
                 }else{

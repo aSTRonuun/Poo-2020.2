@@ -1,0 +1,76 @@
+package entities;
+
+import java.util.ArrayList;
+
+public class Contact {
+    
+    protected String name;
+    protected ArrayList<Phone> phones;
+    
+    public Contact(String name){
+        this.name = name;
+        this.phones = new ArrayList<>();
+    }
+
+    public boolean addPhone(String label, String number){
+        if(Phone.validate(number)){
+            phones.add(new Phone(label, number));
+            return true;
+        }
+        throw new RuntimeException("Invalid number.");
+    }
+
+    public boolean addPhones(ArrayList<Phone> phones){
+        boolean invalid = false;
+        for(int i=0;i<phones.size();i++){
+            if(!Phone.validate(phones.get(i).getNumber())){
+                phones.remove(i);
+                invalid = true;
+            }
+        }
+        if(invalid)
+            System.out.println("Some numbers have not been saved.");
+        else
+            System.out.println("All numbers have been saved.");
+        this.phones.addAll(phones);
+        return true;
+    }
+
+    public boolean rmPhone(int index){
+        if(index >= 0 || index <= phones.size()){ 
+            phones.remove(index);
+            System.out.println("Sucessfully removed.");
+            return true;
+        }
+        throw new RuntimeException("Invalid index");
+    }
+
+    public Phone getLabelPhone(String label){
+        for(Phone phone : phones){
+            if(phone.getLabel().equals(label))
+                return phone;
+        }
+        throw new RuntimeException("Label not found");
+    }
+
+    public String getName() {
+        return name;
+    }
+    public ArrayList<Phone> getPhones(){
+        return phones;
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder exit = new StringBuilder();
+        exit.append(" - " + this.name);
+        int i=0;
+        for(Phone phone : phones){
+            exit.append(" [" + i + ":" + phone.toString() + "]");
+            i++;
+        }
+        exit.append("\n");
+        return exit.toString();
+    }
+}
+

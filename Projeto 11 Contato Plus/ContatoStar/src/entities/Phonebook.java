@@ -11,14 +11,7 @@ public class Phonebook {
     public Phonebook(){
         this.contacts = new TreeMap<>();
     }
-    /*
-        Error por causa do diagrama:  
-            Não consegui corrigir o addContact, pois, acabei me esquecendo estou esperando o vídeo para corrigir aqui.
-        Gambiarra para add
-            verifica-se se o contato existir
-                se sim: adiciona apenas os phones no contato
-                se não: cria-se um contato novo e adicionar os phones. 
-    */
+
     public void addContact(String name, ArrayList<Phone> phones){
         boolean contains = true;
         if(this.contacts.containsKey(name)){

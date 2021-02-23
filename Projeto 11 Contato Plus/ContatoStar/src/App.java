@@ -20,4 +20,24 @@ public class App {
         phonebook.unBookMark("ana");
         System.out.println(phonebook);
     }
+
+
+    
+    /*
+        PhonebookPlus phonebook = new PhonebookPlus();
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            try{
+                String line = sc.nextLine();
+                String[] ui = line.split(" ");
+                if(ui[0].equals("add")){
+                    ArrayList<Phone> phones = new ArrayList<>();
+                    for(int i=2;i<ui.length;i++){
+                        
+                    } 
+                }
+            }
+        }
+
+    */
 }

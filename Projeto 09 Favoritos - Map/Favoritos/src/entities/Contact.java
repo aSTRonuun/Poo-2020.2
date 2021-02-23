@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Contact {
     
-    private String name;
+    protected String name;
     private boolean starred;
-    private ArrayList<Phone> phones;
+    protected ArrayList<Phone> phones;
     
     public Contact(String name){
         this.name = name;
@@ -79,6 +79,10 @@ public class Contact {
         exit.append("\n");
         return exit.toString();
     }
+
+	public ArrayList<Phone> getPhones() {
+		return null;
+	}
 
 
 

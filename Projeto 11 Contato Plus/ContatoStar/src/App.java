@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
-import entities.Contact;
-import entities.ContactPlus;
+
 import entities.Phone;
 import entities.PhonebookPlus;
 
@@ -13,8 +12,12 @@ public class App {
         phones.add(new Phone("cla", "159753"));
         phones.add(new Phone("tim", "753159"));
         phonebook.addContact("vitor", phones);
+        phonebook.addContact("ana", phones);
         phonebook.bookMark("vitor");
         System.out.println(phonebook);
         phonebook.rmvContact("vitor");
+        phonebook.bookMark("ana");
+        phonebook.unBookMark("ana");
+        System.out.println(phonebook);
     }
 }

@@ -11,7 +11,7 @@ public class Contact {
         this.name = name;
         this.phones = new ArrayList<>();
     }
-
+    //Adicionar somente um fone no contato
     public boolean addPhone(String label, String number){
         if(Phone.validate(number)){
             phones.add(new Phone(label, number));
@@ -19,7 +19,7 @@ public class Contact {
         }
         throw new RuntimeException("Invalid number.");
     }
-
+    //Adicionar uma lista de phones no contato
     public boolean addPhones(ArrayList<Phone> phones){
         boolean invalid = false;
         for(int i=0;i<phones.size();i++){
@@ -35,7 +35,7 @@ public class Contact {
         this.phones.addAll(phones);
         return true;
     }
-
+    //remover fone do contato
     public boolean rmPhone(int index){
         if(index >= 0 || index <= phones.size()){ 
             phones.remove(index);
@@ -44,7 +44,7 @@ public class Contact {
         }
         throw new RuntimeException("Invalid index");
     }
-
+    //pegar um phone pelo rotulo
     public Phone getLabelPhone(String label){
         for(Phone phone : phones){
             if(phone.getLabel().equals(label))
@@ -52,14 +52,15 @@ public class Contact {
         }
         throw new RuntimeException("Label not found");
     }
-
+    //pegar o nome
     public String getName() {
         return name;
     }
+    //pegar uma lista de fones
     public ArrayList<Phone> getPhones(){
         return phones;
     }
-    
+    //toString
     @Override
     public String toString() {
         StringBuilder exit = new StringBuilder();

@@ -30,6 +30,7 @@ public class PhonebookPlus extends Phonebook {
             ContactPlus contactPlus =  (ContactPlus) contact;
             contactPlus.setStarred(true);
             bookmarks.put(name, contactPlus);
+            return;
         }
         throw new RuntimeException("Error");
         
@@ -38,16 +39,17 @@ public class PhonebookPlus extends Phonebook {
         if(!this.bookmarks.containsKey(name))
             throw new RuntimeException("Contact "+ name +" does not exit.");
         
+        bookmarks.get(name).setStarred(false);
         bookmarks.remove(name);
     }
     public TreeMap<String, ContactPlus> getBookmarks() {
         return bookmarks;
     }
-    @Override
-    public String toString() {
+
+    public String toStringBookmark() {
         StringBuilder exit = new StringBuilder();
-        for(ContactPlus bookmark : this.bookmarks.values())
-            exit.append(bookmark.toString()+ "\n");
+        for(ContactPlus contact : this.bookmarks.values())
+            exit.append(contact.toString()+ "\n");
         return exit.toString();
     }
 }

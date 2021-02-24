@@ -12,16 +12,14 @@ public class Phonebook {
         this.contacts = new TreeMap<>();
     }
 
-    public void addContact(String name, ArrayList<Phone> phones){
+    public void addContact(Contact contact){
         boolean contains = true;
-        if(this.contacts.containsKey(name)){
-            this.contacts.get(name).addPhones(phones);
+        if(this.contacts.containsKey(contact.getName())){
+            this.contacts.get(contact.name).addPhones(contact.getPhones());
             contains = false;
         }
         if(contains){
-            Contact addContact = new Contact(name);
-            addContact.addPhones(phones);
-            this.contacts.put(name, addContact);
+            this.contacts.put(contact.getName(), contact);
             System.out.println("Contact added sucessefully.");
         }
         return;
@@ -54,7 +52,7 @@ public class Phonebook {
     public String toString() {
         StringBuilder exit = new StringBuilder();
         for(Contact contact : this.contacts.values())
-            exit.append(contact.toString());
+            exit.append(contact.toString() + "\n");
         return exit.toString();
     }
 }

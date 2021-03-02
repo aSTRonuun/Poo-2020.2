@@ -43,9 +43,9 @@ public class Tweet {
         if(likes.isEmpty())
             return data.toString();
          
-        data.append("[");
+        data.append("[👍-"+likes.size()+" ");
         for(String like : likes)
-            data.append(like + " ");
+            data.append(like + ", ");
         data.append("]");
         return data.toString();
     }

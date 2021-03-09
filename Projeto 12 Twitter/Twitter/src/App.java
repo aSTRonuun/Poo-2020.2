@@ -1,17 +1,36 @@
+import controller.Controller;
 import models.Tweet;
 import models.User;
 
 public class App {
     
     public static void main(String[] args) {
-        User user = new User("vitor");
-        User user1 = new User("adriele");
-        user.follow(user1);
-        user1.follow(user);
-        user.sendTweet(new Tweet(0, user.getUserName(), "eu vou conseguir fazer isso"));
-        user.getTweet(0).like(user.getUserName());
-        user1.getTweet(0).like(user1.getUserName());
-        System.out.println(user.getTimeline());
-        System.out.println(user1.getTimeline());
+        Controller controller = new Controller();
+        controller.addUser("goku");
+        controller.addUser("sara");
+        controller.addUser("tina");
+        System.out.println(controller);
+        User one = controller.getUser("goku");
+        User two = controller.getUser("sara");
+        User tres = controller.getUser("tina");
+        one.follow(two);
+        one.follow(tres);
+        two.follow(tres);
+        System.out.println(controller);
+        controller.sendTweet("sara", "hoje estou triste");
+        controller.sendTweet("tina", "ganhei chocolate");
+        controller.sendTweet("sara", "partiu ru");
+        controller.sendTweet("tina", "chocolate ruim");
+        controller.sendTweet("goku", "internet maldita");
+        System.out.println(one.getTimeline());
+        System.out.println(tres.getTimeline());
+        System.out.println(two.getTimeline());
+        two.getTweet(1).like("sara");
+        one.getTweet(1).like("goku");
+        two.getTweet(3).like("sara");
+        System.out.println(two.getTimeline());
+        System.out.println(one.getTimeline());
+        one.unfollow(tres);
+        System.out.println(controller);
     }
 }

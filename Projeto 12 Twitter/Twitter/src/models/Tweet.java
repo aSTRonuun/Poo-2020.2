@@ -38,19 +38,23 @@ public class Tweet {
             +":"
             +this.userName
             +"("
-            +this.msg
+            +" "+this.msg
             +")");
         if(likes.isEmpty())
             return data.toString();
          
         data.append("[👍-"+likes.size()+" ");
-        for(String like : likes)
-            data.append(like + ", ");
+        int i=0;
+        for(String like : likes){
+            if(i == 0){
+                data.append(like);
+                i++;
+            }else{
+                data.append(", "+like);
+                i++;
+            }
+        }
         data.append("]");
         return data.toString();
     }
-
-
-
-
 }

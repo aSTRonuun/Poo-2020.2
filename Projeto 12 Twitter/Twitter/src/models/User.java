@@ -38,7 +38,6 @@ public class User {
     public void sendTweet(Tweet tweet){
         myTweets.add(tweet);
         timeline.put(tweet.getIdTw(), tweet);
-        unreadCount++;
         for(User follower: followers.values()){ 
             follower.timeline.put(tweet.getIdTw(), tweet);
             follower.unreadCount++;
@@ -60,11 +59,27 @@ public class User {
     public String getTimeline() {
         StringBuilder dataTimeline = new StringBuilder();
         for(Tweet tweet : timeline.values())
-            dataTimeline.append(tweet.toString());
+            dataTimeline.append(tweet.toString()+"\n");
         return dataTimeline.toString();
     }
 
     public String getUserName() {
         return userName;
+    }
+
+    public int getSizeFollowing(){
+        return following.size();
+    }
+
+    public int getSizeFollowers(){
+        return followers.size();
+    }
+
+    public TreeMap<String, User> getFollowers() {
+        return followers;
+    }
+
+    public TreeMap<String, User> getFollowing() {
+        return following;
     }
 }

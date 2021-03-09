@@ -9,6 +9,7 @@ public class User {
     private TreeMap<String, User> followers;
     private TreeMap<String, User> following;
     private TreeMap<Integer, Tweet> timeline;
+    private ArrayList<Tweet> inbox;
     private ArrayList<Tweet> myTweets;
     private int unreadCount;
 
@@ -18,6 +19,7 @@ public class User {
         this.following = new TreeMap<>();
         this.timeline = new TreeMap<>();
         this.myTweets = new ArrayList<>();
+        this.inbox = new ArrayList<>();
         this.unreadCount = 0;
     }
 
@@ -37,30 +39,54 @@ public class User {
 
     public void sendTweet(Tweet tweet){
         myTweets.add(tweet);
-        timeline.put(tweet.getIdTw(), tweet);
+        inbox.add(tweet);
         for(User follower: followers.values()){ 
-            follower.timeline.put(tweet.getIdTw(), tweet);
+            follower.inbox.add(tweet);
             follower.unreadCount++;
         }
     }
 
     public Tweet getTweet(int idTw){
         if(!timeline.containsKey(idTw))
-            throw new RuntimeException("Error: id not found... Try again!");
+            throw new RuntimeException("Error: tweet not found... Try again!");
         return timeline.get(idTw);
     }
 
     public String getUnreadCount() {
         StringBuilder dataUnreadCount = new StringBuilder();
-        dataUnreadCount.append(unreadCount + "new unread posts");
+        dataUnreadCount.append(unreadCount + " new unread posts");
         return dataUnreadCount.toString();
+    }
+
+    public void clearInbox(){
+        for(Tweet tweet : inbox)
+            this.timeline.put(tweet.getIdTw(), tweet);
+        this.inbox.clear();
+        this.unreadCount = 0;
+    }
+
+    public String getInbox(){
+        StringBuilder dataInbox = new StringBuilder();
+        dataInbox.append(getUnreadCount()+"\n");
+        for(Tweet tweet : inbox)
+            dataInbox.append(tweet.toString()+"\n");
+        clearInbox();
+        return dataInbox.toString();
     }
 
     public String getTimeline() {
         StringBuilder dataTimeline = new StringBuilder();
+        dataTimeline.append(getUnreadCount()+" in you inbox 💌\n");
         for(Tweet tweet : timeline.values())
             dataTimeline.append(tweet.toString()+"\n");
         return dataTimeline.toString();
+    }
+
+    public String getMyTweets(){
+        StringBuilder dataMy = new StringBuilder();
+        for(Tweet tweet : myTweets)
+            dataMy.append(tweet.toString()+"\n");
+        return dataMy.toString();
     }
 
     public String getUserName() {

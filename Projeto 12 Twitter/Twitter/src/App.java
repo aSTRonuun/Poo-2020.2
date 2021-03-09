@@ -1,36 +1,59 @@
+import java.util.Scanner;
+
 import controller.Controller;
-import models.Tweet;
 import models.User;
 
 public class App {
     
     public static void main(String[] args) {
-        Controller controller = new Controller();
-        controller.addUser("goku");
-        controller.addUser("sara");
-        controller.addUser("tina");
-        System.out.println(controller);
-        User one = controller.getUser("goku");
-        User two = controller.getUser("sara");
-        User tres = controller.getUser("tina");
-        one.follow(two);
-        one.follow(tres);
-        two.follow(tres);
-        System.out.println(controller);
-        controller.sendTweet("sara", "hoje estou triste");
-        controller.sendTweet("tina", "ganhei chocolate");
-        controller.sendTweet("sara", "partiu ru");
-        controller.sendTweet("tina", "chocolate ruim");
-        controller.sendTweet("goku", "internet maldita");
-        System.out.println(one.getTimeline());
-        System.out.println(tres.getTimeline());
-        System.out.println(two.getTimeline());
-        two.getTweet(1).like("sara");
-        one.getTweet(1).like("goku");
-        two.getTweet(3).like("sara");
-        System.out.println(two.getTimeline());
-        System.out.println(one.getTimeline());
-        one.unfollow(tres);
-        System.out.println(controller);
+        Controller system = new Controller();
+        Scanner sc = new Scanner(System.in);
+
+        while(true){
+            try{
+                String line = sc.nextLine();
+                String[] ui = line.split(" ");
+                if(ui[0].equals("end")){
+                    break;
+                }else if(ui[0].equals("addUser")){
+                    system.addUser(ui[1]);
+                }else if(ui[0].equals("show")){
+                    System.out.println(system);
+                }else if(ui[0].equals("follow")){
+                    User one = system.getUser(ui[1]);
+                    User two = system.getUser(ui[2]);
+                    one.follow(two);
+                }else if(ui[0].equals("unfollow")){
+                    User one = system.getUser(ui[1]);
+                    User two = system.getUser(ui[2]);
+                    one.unfollow(two);
+                }else if(ui[0].equals("tweet")){
+                    String username = ui[1];
+                    String msg = "";
+                    for(int i=2;i<ui.length;i++)
+                        msg += ui[i] + " ";
+                    system.sendTweet(username, msg);
+                }else if(ui[0].equals("inbox")){
+                    User user = system.getUser(ui[1]);
+                    System.out.println(user.getInbox());
+                }else if(ui[0].equals("home")){
+                    User user = system.getUser(ui[1]);
+                    System.out.println(user.getTimeline());
+                }else if(ui[0].equals("myTweets")){
+                    User user = system.getUser(ui[1]);
+                    System.out.println(user.getMyTweets());
+                }else if(ui[0].equals("like")){
+                    User user = system.getUser(ui[1]);
+                    user.getTweet(Integer.parseInt(ui[2])).like(ui[1]);
+                }else{
+                    System.out.println("Error: command invalid.");
+                }
+            }catch(IndexOutOfBoundsException e){ 
+                System.out.println("Error: Insuffiecient parameters to complete the operation");
+            }catch(RuntimeException e){
+                System.out.println(e.getMessage());
+            }
+        }
+        sc.close();
     }
 }

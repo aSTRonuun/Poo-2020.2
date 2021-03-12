@@ -19,8 +19,9 @@ public class Controller {
 
     public void addUser(String userName){
         if(users.containsKey(userName))
-            throw new RuntimeException("Error: username already registered... choose another");
+            throw new RuntimeException("❌ Error: username already registered... choose another");
         users.put(userName, new User(userName));
+        System.out.println("✅ User "+ userName + " successfully registered!");
     }
 
     public User getUser(String userName){
@@ -51,7 +52,7 @@ public class Controller {
     public String toString() {
         StringBuilder data = new StringBuilder();
         for(User user : users.values()){
-            data.append(user.getUserName() + "\n");
+            data.append("👤 "+user.getUserName() + "\n");
             data.append("   following:" + user.getSizeFollowing()+ " ");
             data.append(" "+profileList(user.getFollowing()));
             data.append("   followers:" + user.getSizeFollowers()+ " ");

@@ -8,6 +8,7 @@ public class App {
     public static void main(String[] args) {
         Controller system = new Controller();
         Scanner sc = new Scanner(System.in);
+        System.out.println("----------Twitter 🐤----------");
 
         while(true){
             try{

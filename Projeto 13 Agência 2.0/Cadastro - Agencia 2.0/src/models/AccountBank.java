@@ -12,30 +12,43 @@ public class AccountBank{
         this.balance = 0;
     }
 
-    public void toWithdraw(float value){
+    public float getBalance() {
+        return balance;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void draft(float value){
         if(this.balance <= 0)
-            throw new RuntimeException("You have no available balance.");
+            throw new RuntimeException("❌ Error: You have no available balance.");
         if(this.balance - value < 0)
-            throw new RuntimeException("Insufficient balance to complete the action.");
+            throw new RuntimeException("❌ Error: Insufficient balance to complete the action.");
         this.balance -= value;
+        System.out.println("✅ Draft in the amount of "+value+" has been successfully made");
         return;
     }
 
     public void deposit(float value){
         this.balance += value;
-        System.out.println("✅ Operation performed successfully");
+        System.out.println("✅ Deposit in the amount of "+value+" has been successfully made");
         return;
     }
 
     public void transfer(AccountBank other, float value){
         if(this.balance <= 0)
-            throw new RuntimeException("You have no available balance.");
+            throw new RuntimeException("❌ Error: You have no available balance.");
         if(this.balance - value < 0)
-            throw new RuntimeException("Insufficient balance to complete the action.");
+            throw new RuntimeException("❌ Error: Insufficient balance to complete the action.");
         this.balance -= value;
         other.balance += value;
-        System.out.println("✅ Operation performed successfully");
+        System.out.println("✅ Transfer in the amount of "+value+" has been successfully made");
         return;
+    }
+
+    public void monthlyUpdate(){
+        
     }
 
     @Override

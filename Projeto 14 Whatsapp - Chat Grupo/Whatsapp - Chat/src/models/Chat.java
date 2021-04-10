@@ -14,7 +14,7 @@ public class Chat {
         this.users = new TreeMap<>();
     }
 
-    public String getId() {
+    public String getChatId() {
         return chatId;
     }
 
@@ -74,7 +74,21 @@ public class Chat {
         addUserChat(invited);
     }
 
-    
+    public void removeUserChat(User user){
+        if(!users.containsKey(user.getUserId()))
+            throw new RuntimeException("❌ Error: user ("+user.getUserId()+") not found!");
+        users.remove(user.getUserId());
+        inboxes.remove(user.getUserId());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder data = new StringBuilder();
+        data.append(this.chatId+" ");
+        return data.toString();
+    }
+
+
 
 
 

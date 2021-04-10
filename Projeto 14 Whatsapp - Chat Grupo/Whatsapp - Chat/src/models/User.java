@@ -32,10 +32,10 @@ public class User {
     }
 
     public void addChat(Chat chat){
-        if(chats.containsKey(chat.getId()))
-            throw new RuntimeException("❌ Error: the user is already added to the chat ("+chat.getId()+").");
-        chats.put(chat.getId(), chat);
-        notify.put(chat.getId(), new Notify(chat.getId()));
+        if(chats.containsKey(chat.getChatId()))
+            throw new RuntimeException("❌ Error: the user is already added to the chat ("+chat.getChatId()+").");
+        chats.put(chat.getChatId(), chat);
+        notify.put(chat.getChatId(), new Notify(chat.getChatId()));
     }
 
     public void addNotify(String chatId){
@@ -45,10 +45,10 @@ public class User {
     }
 
     public void removeChat(Chat chat){
-        if(!chats.containsKey(chat.getId()))
-            throw new RuntimeException("❌ Error: chat ("+chat.getId()+") not found.");
-        chats.remove(chat.getId());
-        notify.remove(chat.getId());
+        if(!chats.containsKey(chat.getChatId()))
+            throw new RuntimeException("❌ Error: chat ("+chat.getChatId()+") not found.");
+        chats.remove(chat.getChatId());
+        notify.remove(chat.getChatId());
     }
 
     @Override

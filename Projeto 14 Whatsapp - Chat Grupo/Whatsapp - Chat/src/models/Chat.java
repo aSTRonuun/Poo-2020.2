@@ -87,13 +87,4 @@ public class Chat {
         data.append(this.chatId+" ");
         return data.toString();
     }
-
-
-
-
-
-    
-
-
-
 }

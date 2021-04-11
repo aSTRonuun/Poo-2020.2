@@ -39,7 +39,7 @@ public class WhatsappService {
             throw new RuntimeException("❌ Error: userName ("+userId+") not found in the system.");
         StringBuilder chatsData = new StringBuilder();
         chatsData.append(userId + ": (chats)"+"[");
-        rep_user.get(userId).getChats().values().forEach((chat) -> chatsData.append(chat.getChatId()));
+        rep_user.get(userId).getChats().values().forEach((chat) -> chatsData.append(chat.getChatId()+" "));
         chatsData.append("]");
         return chatsData.toString();
     }
@@ -49,7 +49,7 @@ public class WhatsappService {
             throw new RuntimeException("❌ Error: chat ("+chatId+") not found in the system.");
         StringBuilder usersData = new StringBuilder();
         usersData.append(chatId + ": (users)"+"[");
-        rep_chat.get(chatId).getUsers().values().forEach((user) -> usersData.append(user.getUserId()));
+        rep_chat.get(chatId).getUsers().values().forEach((user) -> usersData.append(user.getUserId()+" "));
         usersData.append("]");
         return usersData.toString();
     }
@@ -74,12 +74,14 @@ public class WhatsappService {
         this.rep_chat.put(chatId, chat);
         user.addChat(chat);
         chat.addUserChat(user);
+        return;
     }
 
     public void createUser(String userId){
         if(rep_user.containsKey(userId))
             throw new RuntimeException("❌ Error: userName ("+userId+") already registered in the system.");
         rep_user.put(userId, new User(userId));
+        return;
     }
 
     public void addByInvite(String invitingId, String invitedId, String chatId){        
@@ -87,6 +89,8 @@ public class WhatsappService {
         User invited = getUser(invitedId);
         Chat chat = getChat(chatId);
         chat.addByInvite(inviting, invited);
+        invited.addChat(chat);
+        return;
     }
 
     public String allUsers(){
@@ -99,12 +103,14 @@ public class WhatsappService {
         User user = getUser(userId);
         Chat chat = getChat(chatId);
         chat.removeUserChat(user);
+        return;
     }
 
     public void sendMessage(String userIdSend, String chatId, String message){
         User userSend = getUser(userIdSend);
         Chat chat = getChat(chatId);
         chat.deliverZap(userSend, message);
+        return;
     }
 
     public String readMessageUserChat(String userId, String chatId){

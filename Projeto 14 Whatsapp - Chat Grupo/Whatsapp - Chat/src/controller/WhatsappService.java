@@ -22,7 +22,7 @@ public class WhatsappService {
 
     protected Chat getChat(String chatId){
         if(!this.rep_chat.containsKey(chatId))
-            throw new RuntimeException("❌ Error: userName ("+chatId+") not found in the system.");
+            throw new RuntimeException("❌ Error: chatId ("+chatId+") not found in the system.");
         return this.rep_chat.get(chatId);  
     }
 
@@ -66,12 +66,10 @@ public class WhatsappService {
     }
 
     public void creatChat(String userId, String chatId){
-        if(!this.rep_user.containsKey(userId))
-            throw new RuntimeException("❌ Error: userName ("+userId+") not found in the system.");
         if(this.rep_chat.containsKey(chatId))
             throw new RuntimeException("❌ Error: chatId ("+chatId+") already registered in the system");
-        User user = this.getUser(userId);
 
+        User user = this.getUser(userId);
         Chat chat = new Chat(chatId);
         this.rep_chat.put(chatId, chat);
         user.addChat(chat);
@@ -84,14 +82,7 @@ public class WhatsappService {
         rep_user.put(userId, new User(userId));
     }
 
-    public void addByInvite(String invitingId, String invitedId, String chatId){
-        if(!this.rep_user.containsKey(invitingId))
-            throw new RuntimeException("❌ Error: user ("+invitingId+") not found in the system.");
-        if(!this.rep_user.containsKey(invitedId))
-            throw new RuntimeException("❌ Error: user ("+invitedId+") not found in the system.");
-        if(!this.rep_chat.containsKey(chatId))
-            throw new RuntimeException("❌ Error: chat ("+chatId+") not found in the system.");
-        
+    public void addByInvite(String invitingId, String invitedId, String chatId){        
         User inviting = getUser(invitingId);
         User invited = getUser(invitedId);
         Chat chat = getChat(chatId);
@@ -105,13 +96,25 @@ public class WhatsappService {
     }
 
     public void removeUserChat(String userId, String chatId){
-        if(!this.rep_user.containsKey(userId))
-            throw new RuntimeException("❌ Error: user ("+userId+") not found in the system.");
-        if(!this.rep_chat.containsKey(chatId))
-            throw new RuntimeException("❌ Error: chat ("+chatId+") not found in the system.");
-        
         User user = getUser(userId);
         Chat chat = getChat(chatId);
         chat.removeUserChat(user);
+    }
+
+    public void sendMessage(String userIdSend, String chatId, String message){
+        User userSend = getUser(userIdSend);
+        Chat chat = getChat(chatId);
+        chat.deliverZap(userSend, message);
+    }
+
+    public String readMessageUserChat(String userId, String chatId){
+        User user = getUser(userId);
+        Chat chat = getChat(chatId);
+        StringBuilder readMessageData = new StringBuilder();
+        readMessageData.append("Chat ("+chatId+"):\n");
+        chat.getInboxUser(user).getMessages().forEach(
+            (message) -> readMessageData.append(message+"\n"));
+        user.getNotifyUserChat(chatId).rmvNotify();
+        return readMessageData.toString();
     }
 }

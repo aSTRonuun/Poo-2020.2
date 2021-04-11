@@ -83,4 +83,35 @@ public class WhatsappService {
             throw new RuntimeException("❌ Error: userName ("+userId+") already registered in the system.");
         rep_user.put(userId, new User(userId));
     }
+
+    public void addByInvite(String invitingId, String invitedId, String chatId){
+        if(!this.rep_user.containsKey(invitingId))
+            throw new RuntimeException("❌ Error: user ("+invitingId+") not found in the system.");
+        if(!this.rep_user.containsKey(invitedId))
+            throw new RuntimeException("❌ Error: user ("+invitedId+") not found in the system.");
+        if(!this.rep_chat.containsKey(chatId))
+            throw new RuntimeException("❌ Error: chat ("+chatId+") not found in the system.");
+        
+        User inviting = getUser(invitingId);
+        User invited = getUser(invitedId);
+        Chat chat = getChat(chatId);
+        chat.addByInvite(inviting, invited);
+    }
+
+    public String allUsers(){
+        StringBuilder allUsersData = new StringBuilder();
+        this.rep_user.values().forEach((user) -> allUsersData.append(user.toString()+" "));
+        return allUsersData.toString();
+    }
+
+    public void removeUserChat(String userId, String chatId){
+        if(!this.rep_user.containsKey(userId))
+            throw new RuntimeException("❌ Error: user ("+userId+") not found in the system.");
+        if(!this.rep_chat.containsKey(chatId))
+            throw new RuntimeException("❌ Error: chat ("+chatId+") not found in the system.");
+        
+        User user = getUser(userId);
+        Chat chat = getChat(chatId);
+        chat.removeUserChat(user);
+    }
 }

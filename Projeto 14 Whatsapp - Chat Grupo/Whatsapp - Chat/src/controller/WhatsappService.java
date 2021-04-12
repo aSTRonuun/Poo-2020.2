@@ -127,4 +127,14 @@ public class WhatsappService {
         user.getNotifyUserChat(chatId).rmvNotify();
         return readMessageData.toString();
     }
+
+    public String readAllMessageUserChat(String userId, String chatId){
+        Chat chat = getChat(chatId);
+        StringBuilder readMessageData = new StringBuilder();
+        readMessageData.append("Chat ("+chatId+"):\n");
+        ArrayList<Message> allMessages = chat.getAllMessages(userId);
+        for(Message message : allMessages)
+            readMessageData.append(message+"\n");
+        return readMessageData.toString();
+    }
 }

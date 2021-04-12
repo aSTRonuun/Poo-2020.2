@@ -1,8 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 import models.Chat;
+import models.Message;
 import models.User;
 
 public class WhatsappService {
@@ -60,7 +62,7 @@ public class WhatsappService {
         StringBuilder notifyData = new StringBuilder();
         notifyData.append("Notify "+ "[");
         rep_user.get(userId).getNotify().values().forEach(
-            (notify) -> notifyData.append(notify.toString()));
+            (notify) -> notifyData.append(notify.toString()+" "));
         notifyData.append("]");
         return notifyData.toString();
     }
@@ -103,6 +105,7 @@ public class WhatsappService {
         User user = getUser(userId);
         Chat chat = getChat(chatId);
         chat.removeUserChat(user);
+        user.removeChat(chat);
         return;
     }
 
@@ -118,8 +121,9 @@ public class WhatsappService {
         Chat chat = getChat(chatId);
         StringBuilder readMessageData = new StringBuilder();
         readMessageData.append("Chat ("+chatId+"):\n");
-        chat.getInboxUser(user).getMessages().forEach(
-            (message) -> readMessageData.append(message+"\n"));
+        ArrayList<Message> newMessages = chat.getMessages(userId);
+        for(Message message : newMessages)
+            readMessageData.append(message+"\n");
         user.getNotifyUserChat(chatId).rmvNotify();
         return readMessageData.toString();
     }

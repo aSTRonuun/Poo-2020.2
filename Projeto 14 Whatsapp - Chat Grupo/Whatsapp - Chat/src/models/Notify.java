@@ -22,13 +22,16 @@ public class Notify {
     }
 
     public void rmvNotify(){
-        this.unreadCount--;
+        this.unreadCount = 0;
     }
 
     @Override
     public String toString() {
         StringBuilder data = new StringBuilder();
-        data.append(this.chatId+"("+this.unreadCount+")");
+        if(this.unreadCount > 0)
+            data.append(this.chatId+"("+this.unreadCount+")");
+        else
+            data.append(this.chatId);
         return data.toString();
     }
 }

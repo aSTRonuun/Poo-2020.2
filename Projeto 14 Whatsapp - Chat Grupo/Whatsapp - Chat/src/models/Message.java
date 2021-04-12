@@ -13,7 +13,7 @@ public class Message {
     @Override
     public String toString() {
         StringBuilder data = new StringBuilder();
-        data.append("["+ userId+":"+text+"]");
+        data.append("["+ userId+": "+text+"]");
         return data.toString();
     }
 }

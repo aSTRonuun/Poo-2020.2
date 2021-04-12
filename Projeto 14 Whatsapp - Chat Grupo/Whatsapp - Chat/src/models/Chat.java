@@ -21,7 +21,8 @@ public class Chat {
     public ArrayList<Message> getMessages(String userId){
         if(!inboxes.containsKey(userId))
             throw new RuntimeException("❌ Error: user ("+userId+") not found!");
-        return inboxes.get(userId).getMessages();
+        ArrayList<Message> messages = inboxes.get(userId).getMessages();
+        return messages;
     }
 
     public TreeMap<String, User> getUsers() {
